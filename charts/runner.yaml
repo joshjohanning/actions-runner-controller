@@ -1,0 +1,17 @@
+# runner.yaml
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: Runner
+metadata:
+  name: example-runner
+spec:
+  repository: joshjohanning-org/test-arc
+  containerMode: kubernetes
+  serviceAccountName: my-service-account
+  workVolumeClaimTemplate:
+    storageClassName: "my-dynamic-storage-class"
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+  env: []
